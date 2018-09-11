@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,18 +26,30 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string beep_item = "Beep: Hertz - " + hertzText.Text + " Interval - " + intervalText.Text;
+            string beep_item = "Beep: Hertz= " + hertzText.Text + " Interval - " + intervalText.Text;
             listBox1.Items.Add(beep_item);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            int hertz;
+            int interval;
+
             foreach(var item  in listBox1.Items)
             {
-                string qeuedItem = item.ToString();
-                string hertz = qeuedItem.Split('-')[12];
-                hertzText.Text = hertz;
+                foreach  (char ch in item.ToString())
+                {
+                    if (Char.IsNumber(ch))
+                    {
+                            
+                    }
+                }
             }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
