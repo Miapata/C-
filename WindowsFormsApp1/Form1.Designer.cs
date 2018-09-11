@@ -39,6 +39,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.sleepText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.loopButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -139,11 +140,23 @@
             this.label3.Text = "Sleep Time";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // loopButton
+            // 
+            this.loopButton.AutoSize = true;
+            this.loopButton.Image = global::WindowsFormsApp1.Properties.Resources.loop_32__1_;
+            this.loopButton.Location = new System.Drawing.Point(4, 141);
+            this.loopButton.Name = "loopButton";
+            this.loopButton.Size = new System.Drawing.Size(38, 38);
+            this.loopButton.TabIndex = 11;
+            this.loopButton.UseVisualStyleBackColor = true;
+            this.loopButton.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(496, 414);
+            this.Controls.Add(this.loopButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.sleepText);
             this.Controls.Add(this.button4);
@@ -176,6 +189,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox sleepText;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button loopButton;
     }
 }
 

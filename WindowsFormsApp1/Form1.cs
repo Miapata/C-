@@ -14,7 +14,8 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
 
-        public StringBuilder stringBuilder;
+        
+        public bool loop;
         public Form1()
         {
             InitializeComponent();
@@ -37,27 +38,30 @@ namespace WindowsFormsApp1
 
             string interval_String;
             string hertz_String;
-
-            foreach (var item  in listBox1.Items)
-            {
-                if (item.ToString().Contains('='))
+            while (true) { 
+                foreach (var item in listBox1.Items)
                 {
-                    //This can give us the interval
-                    interval_String = item.ToString().Split('=').Last();
+                    if (item.ToString().Contains('='))
+                    {
+                        //This can give us the interval
+                        interval_String = item.ToString().Split('=').Last();
 
-                    //This can give us the hertz
-                    hertz_String = item.ToString().Split('=', 'I')[1].TrimEnd(' ');
+                        //This can give us the hertz
+                        hertz_String = item.ToString().Split('=', 'I')[1].TrimEnd(' ');
 
 
-                    Console.Beep(Convert.ToInt32(hertz_String), Convert.ToInt32(interval_String));
+                        Console.Beep(Convert.ToInt32(hertz_String), Convert.ToInt32(interval_String));
+                    }
+                    else
+                    {
+                        Thread.Sleep(Convert.ToInt32(item.ToString().Split(':').Last()));
+                    }
                 }
-                else
+                if (loop == false)
                 {
-                    Thread.Sleep(Convert.ToInt32( item.ToString().Split(':').Last())); 
+                    return;
                 }
-            }
-
-            
+        }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,6 +83,20 @@ namespace WindowsFormsApp1
         {
             string item = "Sleep:" + sleepText.Text;
             listBox1.Items.Add(item);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (loop)
+            {
+                loop = false;
+                loopButton.Image = Properties.Resources.loop_32__1_;
+            }
+            else
+            {
+                loop = true;
+                loopButton.Image = Properties.Resources.loop_32__1_1;
+            }
         }
     }
 }
